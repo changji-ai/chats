@@ -64,6 +64,15 @@ npm run build; npm start   # 正式运行
 连接器框架是开放的：在 `src/main/connectors/` 新建一个实现 `Connector` 接口（start / stop / listChats / history / sendText）的类，在 `connectors/index.ts` 注册，并在 `src/shared/platforms.ts` 加平台定义（字段表单自动生成）即可。
 微信暂无官方个人号协议，可后续接 wechaty 或企业微信 API；飞书 / 钉钉 / Slack 均有官方开放 API，可按同一框架添加。
 
+## 发布与自动更新
+
+- 推送 `v*` 标签触发 GitHub Actions 三平台构建：Windows NSIS（x64+arm64 合一安装包）、
+  macOS universal（dmg + zip）、Linux（AppImage + deb，x64/arm64），产物发布到
+  [Releases](https://github.com/changji-ai/chats/releases)。
+- 应用内置 electron-updater：启动后自动检查新版本 → 后台下载（设置里看进度）→
+  一键「重启并更新」静默安装并重启；退出时也会自动安装已下载的更新。
+- 本地打包：`npm run dist`（不发布）/ `npm run release`（发布到 GitHub）。
+
 ## 已知限制
 
 - 消息只保留本次运行内的缓存（切换会话时拉最近 50 条），不做本地全量历史
