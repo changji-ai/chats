@@ -1,0 +1,51 @@
+{
+  "name": "chat-hub",
+  "version": "0.1.0",
+  "description": "多平台聊天聚合桌面工作台（协议直连，不用内嵌网页）",
+  "author": "changji-ai",
+  "homepage": "https://github.com/changji-ai/chats#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changji-ai/chats.git"
+  },
+  "main": "./out/main/index.js",
+  "author": "ultra",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "dist": "electron-vite build && electron-builder --publish never",
+    "release": "electron-vite build && electron-builder --publish always",
+    "start": "electron .",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "vue-tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web"
+  },
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.76.0",
+    "@slack/socket-mode": "^3.1.0",
+    "@slack/web-api": "^8.2.0",
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "dingtalk-stream": "^2.1.6-beta.1",
+    "discord.js": "^14.27.0",
+    "electron-updater": "^6.8.11",
+    "irc-framework": "^4.14.0",
+    "matrix-js-sdk": "^44.0.0",
+    "qrcode": "^1.5.4",
+    "telegram": "^2.26.22",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/qrcode": "^1.5.6",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0",
+    "electron-vite": "^6.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0",
+    "vue": "^3.5.44",
+    "vue-tsc": "^3.3.13"
+  }
+}
