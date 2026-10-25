@@ -7,6 +7,9 @@ directories:
 files:
   - out/**
   - package.json
+  # ws 的可选原生加速模块：macOS universal 合并时冲突，且 ws 无它们也能正常工作
+  - "!node_modules/bufferutil/**"
+  - "!node_modules/utf-8-validate/**"
 asar: true
 win:
   target:
